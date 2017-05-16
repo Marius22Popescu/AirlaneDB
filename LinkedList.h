@@ -2,11 +2,12 @@
 #define LINKEDLIST_H_
 #include <iostream>
 #include <fstream>
+#include "Passenger.h"
 using namespace std;
 
 template <class T>
 struct node{
-	int data;
+	Passanger data;
 	node* next;
 };
 

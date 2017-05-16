@@ -4,22 +4,23 @@
 #define ORDEREDLINKEDLIST_H_
 #include <iostream>
 #include <fstream>
+#include "LinkedList.h"
 #include "Passenger.h"
 using namespace std;
 
+
 template <class T>
-struct node{
-	int data;
-	node* next;
+struct node1{
+	Passanger data;
+	node1* next;
 };
 
 
 
 template <class T>
-class OrderedLinkedList:public LinkedList
-{
+class OrderedLinkedList :public LinkedList<T>{
 protected:
-	node<T> *head, *last;
+	node1<T> *head, *last;
 	int count;
 public:
 	OrderedLinkedList();
@@ -35,7 +36,7 @@ public:
 	T back();
 	T front();
 	void destroy_list();
-	virtual ~LinkedList();
+	virtual ~OrderedLinkedList();
 private:
 	void copy_list(LinkedList<T> otherlist);
 	
@@ -64,7 +65,7 @@ int OrderedLinkedList<T>::length(){
 //insert a new element to the front
 template <class T>
 void OrderedLinkedList<T>::insert_first(T& item){
-	node<T>* current = new node<T>;
+	node1<T>* current = new node1<T>;
 	current->data = item;
 	current->next = NULL;
 	if (head != NULL){
@@ -80,7 +81,7 @@ void OrderedLinkedList<T>::insert_first(T& item){
 //insert a new item at the end of the list
 template <class T>
 void OrderedLinkedList<T>::insert_last(T& item){
-	node<T>* current = new node<T>;
+	node1<T>* current = new node1<T>;
 	current->data = item;
 	current->next = NULL;
 	if (head != NULL){
@@ -96,9 +97,9 @@ void OrderedLinkedList<T>::insert_last(T& item){
 
 template <class T>
 ostream& operator<< (ostream& os, OrderedLinkedList<T>& list){
-	node<T>* temp = list.head;
+	node1<T>* temp = list.head;
 	while (temp != NULL){
-		os << temp->data << " ";
+		os <<" "<<temp->data.getFirstName()<<" "<< temp->data.getLastName()<<" ["<< temp->data.getAddress()<<"] ["<<temp->data.getPhone()<< "]\n";
 		temp = temp->next;
 	}
 	return os;
@@ -106,8 +107,8 @@ ostream& operator<< (ostream& os, OrderedLinkedList<T>& list){
 
 template <class T>
 T OrderedLinkedList<T>::search(T& item){
-	node<T>* temp = head;
-	while (head != NULL && temp->data != item){
+	node1<T>* temp = head;
+	while (head != NULL && temp->data != item){   //Here is the problem
 		temp = temp->next;
 	}
 
@@ -116,7 +117,7 @@ T OrderedLinkedList<T>::search(T& item){
 
 template <class T>
 void OrderedLinkedList<T>::delete_node(T& item){
-	node<T> *p, *q;
+	node1<T> *p, *q;
 	if (head == NULL)
 		cout << "List is empty..." << endl;
 	else
@@ -163,7 +164,7 @@ T OrderedLinkedList<T>::front(){
 }
 template <class T>
 void OrderedLinkedList<T>::destroy_list(){
-	node<T>* p;
+	node1<T>* p;
 	while (head != NULL){
 		p = head;
 		head = head->next;
