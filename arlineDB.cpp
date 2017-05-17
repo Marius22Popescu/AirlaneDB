@@ -41,7 +41,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		p.setAddress(address);
 		p.setPhone(phone);
 		mylist.insert_last(p);
-
+		//cout << mylist.front() << endl;
 		}
 		else if (menuSelection == 'L' || menuSelection == 'l')
 		{
@@ -56,10 +56,11 @@ int _tmain(int argc, _TCHAR* argv[])
 			cout << "Enter the first name: ";
 			cin.ignore();
 			getline(cin, firstName);
-			Passanger temp;                //here is the problem !!!!
-			temp.setFirstName(firstName); //
+			Passanger temp;                
+			temp.setFirstName(firstName);
 			temp.setLastName(lastName);
-			mylist.search(temp);
+			temp = mylist.search(temp);
+		    cout<<temp << endl;    
 		}
 		// Prompt user for name to delete 
 		if (menuSelection == 'D' || menuSelection == 'd')
@@ -70,14 +71,18 @@ int _tmain(int argc, _TCHAR* argv[])
 			cout << "Enter the first name: ";
 			cin.ignore();
 			getline(cin, firstName);
-		//	mylist.delete_node(z);
-			cout << "The passenger was deleted.\n";
+			Passanger temp1;
+			temp1.setFirstName(firstName);
+			temp1.setLastName(lastName);
+			mylist.delete_node(temp1);
+
+//			cout << "The passenger was deleted.\n";
 		}
 	} while (menuSelection != 'Q' && menuSelection != 'q');
 
 	//cout << mylist << endl;
 	cout << "size:" << mylist.length() << endl;
-
+	/*******
 	cout << "Enter a number to serch\n";
 	int y;
 	cin >> y;
@@ -93,7 +98,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	mylist.destroy_list();
 	cout << mylist;
 	cout << "size:" << mylist.length() << endl;
-
+****/
 	system("pause");
 	return 0;
 }

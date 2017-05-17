@@ -3,6 +3,7 @@
 #define ORDEREDLINKEDLIST_H_
 #include <iostream>
 #include <fstream>
+#include <assert.h>
 #include "LinkedList.h"
 #include "Passenger.h"
 using namespace std;
@@ -107,7 +108,7 @@ ostream& operator<< (ostream& os, OrderedLinkedList<T>& list){
 template <class T>
 T OrderedLinkedList<T>::search(T& item){
 	node1<T>* temp = head;
-	while (head != NULL && temp->data != item){   //Here is the problem
+	while (head != NULL && temp->data != item){   
 		temp = temp->next;
 	}
 
@@ -117,10 +118,13 @@ T OrderedLinkedList<T>::search(T& item){
 template <class T>
 void OrderedLinkedList<T>::delete_node(T& item){
 	node1<T> *p, *q;
+	
 	if (head == NULL)
 		cout << "List is empty..." << endl;
-	else
-		if (head->data == item){
+	else{
+		T data = head->data;
+		if (data == item){
+			cout << "single data" << endl;
 			p = head;
 			head = head->next;
 			delete p;
@@ -128,26 +132,36 @@ void OrderedLinkedList<T>::delete_node(T& item){
 			if (head == NULL)
 				last = NULL;
 		}
-		else{
+		cout<<data;
+	}
+	/*	else{
 			p = head;
 			q = head->next;
 			while (q != NULL && q->data != item){
 				p = q;
 				q = q->next;
 			}
-			if (q == NULL)
+			if (p == NULL)
 				cout << "item is not found";
 			
 			else {
+				cout << "case else " << endl;
 				p->next = q->next;
 				if (q->next == NULL)
 					last = p;
 				delete q;
 				count--;
 
-			}
+			}*/
 
-		}
+
+
+
+
+
+
+
+		//}
 
 }
 template <class T>

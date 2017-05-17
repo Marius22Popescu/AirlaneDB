@@ -28,8 +28,10 @@ public:
 	void setPhone(string n);
 	string getPhone();
 	virtual ~Passanger();
-	template <class T>
-	bool operator == (const T & t1, const T & t2);
+	bool operator== (Passanger & other);
+	bool operator!= (Passanger & other);
+	
+	friend ostream& operator<< (ostream & os, Passanger & other);
 };
 
 
@@ -86,10 +88,23 @@ string Passanger::getPhone()
 	return Phone;
 }
 
-template <class T>
-bool Passanger::operator==(const T & t1, const T & t2)
+bool Passanger::operator== (Passanger & other)
 {
-	if (t1.getFirstName() == t2.getFirstName() && t1.getLastName() == t2.getLastName())
+	if (getFirstName() == other.getFirstName() && getLastName() == other.getLastName())
 		return true;
 	return false;
+}
+
+bool Passanger::operator!= (Passanger & other)
+{
+	if (getFirstName() != other.getFirstName() && getLastName() != other.getLastName())
+		return false;
+	return true;
+}
+
+
+ostream& operator<<(ostream & os, Passanger & other){
+		os << " " << other.getFirstName() << " " << other.getLastName() << " [" << other.getAddress() << "] [" << other.getPhone() << "]\n";
+	
+	return os;
 }
