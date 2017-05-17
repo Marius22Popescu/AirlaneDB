@@ -29,7 +29,7 @@ public:
 	string getPhone();
 	virtual ~Passanger();
 	template <class T>
-	bool operator(const T & t1, const T & t2);
+	bool operator == (const T & t1, const T & t2);
 };
 
 
@@ -87,7 +87,7 @@ string Passanger::getPhone()
 }
 
 template <class T>
-bool Passanger::operator(const T & t1, const T & t2)
+bool Passanger::operator==(const T & t1, const T & t2)
 {
 	if (t1.getFirstName() == t2.getFirstName() && t1.getLastName() == t2.getLastName())
 		return true;
