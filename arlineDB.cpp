@@ -56,10 +56,10 @@ int _tmain(int argc, _TCHAR* argv[])
 			cout << "Enter the first name: ";
 			cin.ignore();
 			getline(cin, firstName);
-		//	Passanger temp;                //here is the problem !!!!
-		//	temp.setFirstName(firstName); //
-		//	temp.setLastName(lastName);
-		//	mylist.search(temp);
+			Passanger temp;                //here is the problem !!!!
+			temp.setFirstName(firstName); //
+			temp.setLastName(lastName);
+			mylist.search(temp);
 		}
 		// Prompt user for name to delete 
 		if (menuSelection == 'D' || menuSelection == 'd')
