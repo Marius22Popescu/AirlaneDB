@@ -98,8 +98,8 @@ bool Passanger::operator== (Passanger & other)
 bool Passanger::operator!= (Passanger & other)
 {
 	if (getFirstName() != other.getFirstName() && getLastName() != other.getLastName())
-		return false;
-	return true;
+		return true;
+	return false;
 }
 
 

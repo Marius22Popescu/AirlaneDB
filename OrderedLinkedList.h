@@ -118,7 +118,6 @@ T OrderedLinkedList<T>::search(T& item){
 template <class T>
 void OrderedLinkedList<T>::delete_node(T& item){
 	node1<T> *p, *q;
-	
 	if (head == NULL)
 		cout << "List is empty..." << endl;
 	else{

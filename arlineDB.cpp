@@ -25,12 +25,14 @@ int _tmain(int argc, _TCHAR* argv[])
 		if (menuSelection == 'A' || menuSelection == 'a')
 		{
 			cout << "Enter first name: \n";
-			cin.ignore();
-			getline(cin, firstName);
+			cin >> firstName;
+			//cin.ignore();
+			//getline(cin, firstName);
 			cout << "Enter last name: \n";
-
-			getline(cin, lastName);
+			cin >> lastName;
+			//getline(cin, lastName);
 			cout << "Enter address: \n";
+			cin.ignore();
 			getline(cin, address);
 			cout << "Enter phone: \n";
 			cin >> phone;
@@ -74,6 +76,8 @@ int _tmain(int argc, _TCHAR* argv[])
 			Passanger temp1;
 			temp1.setFirstName(firstName);
 			temp1.setLastName(lastName);
+			temp1.getFirstName();
+			temp1.getFirstName();
 			mylist.delete_node(temp1);
 
 //			cout << "The passenger was deleted.\n";
