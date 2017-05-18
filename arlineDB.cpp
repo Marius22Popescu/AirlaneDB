@@ -26,11 +26,8 @@ int _tmain(int argc, _TCHAR* argv[])
 		{
 			cout << "Enter first name: \n";
 			cin >> firstName;
-			//cin.ignore();
-			//getline(cin, firstName);
 			cout << "Enter last name: \n";
 			cin >> lastName;
-			//getline(cin, lastName);
 			cout << "Enter address: \n";
 			cin.ignore();
 			getline(cin, address);
@@ -43,7 +40,6 @@ int _tmain(int argc, _TCHAR* argv[])
 		p.setAddress(address);
 		p.setPhone(phone);
 		mylist.insert_last(p);
-		//cout << mylist.front() << endl;
 		}
 		else if (menuSelection == 'L' || menuSelection == 'l')
 		{
@@ -53,11 +49,9 @@ int _tmain(int argc, _TCHAR* argv[])
 		if (menuSelection == 'S' || menuSelection == 's')
 		{ 
 			cout << "Enter the last name: ";
-			cin.ignore();
-			getline(cin, lastName);
+			cin >> lastName;
 			cout << "Enter the first name: ";
-			cin.ignore();
-			getline(cin, firstName);
+			cin >> firstName;
 			Passanger temp;                
 			temp.setFirstName(firstName);
 			temp.setLastName(lastName);
@@ -68,41 +62,19 @@ int _tmain(int argc, _TCHAR* argv[])
 		if (menuSelection == 'D' || menuSelection == 'd')
 		{
 			cout << "Enter the last name: ";
-			cin.ignore();
-			getline(cin, lastName);
+			cin >> lastName;
 			cout << "Enter the first name: ";
-			cin.ignore();
-			getline(cin, firstName);
+			cin >> firstName;
 			Passanger temp1;
 			temp1.setFirstName(firstName);
 			temp1.setLastName(lastName);
-			temp1.getFirstName();
-			temp1.getFirstName();
 			mylist.delete_node(temp1);
-
-//			cout << "The passenger was deleted.\n";
+			cout << "The passenger was deleted!\n";
 		}
 	} while (menuSelection != 'Q' && menuSelection != 'q');
-
-	//cout << mylist << endl;
-	cout << "size:" << mylist.length() << endl;
-	/*******
-	cout << "Enter a number to serch\n";
-	int y;
-	cin >> y;
-	//cout << "this is your item " << mylist.search(y) << endl;
-
-	cout << "Enter a number to delete\n";
-	int z;
-	cin >> z;
-	cout << "the number was deleted\n";
-	//mylist.delete_node(z);
-	cout << mylist << endl;
-
+	//destroing the list 
 	mylist.destroy_list();
-	cout << mylist;
-	cout << "size:" << mylist.length() << endl;
-****/
+
 	system("pause");
 	return 0;
 }

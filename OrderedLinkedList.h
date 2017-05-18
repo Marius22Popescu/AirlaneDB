@@ -120,10 +120,8 @@ void OrderedLinkedList<T>::delete_node(T& item){
 	node1<T> *p, *q;
 	if (head == NULL)
 		cout << "List is empty..." << endl;
-	else{
-		T data = head->data;
-		if (data == item){
-			cout << "single data" << endl;
+	else
+		if (head->data == item){
 			p = head;
 			head = head->next;
 			delete p;
@@ -131,38 +129,25 @@ void OrderedLinkedList<T>::delete_node(T& item){
 			if (head == NULL)
 				last = NULL;
 		}
-		cout<<data;
-	}
-	/*	else{
+		else{
 			p = head;
 			q = head->next;
 			while (q != NULL && q->data != item){
 				p = q;
 				q = q->next;
 			}
-			if (p == NULL)
+			if (q == NULL)
 				cout << "item is not found";
-			
-			else {
-				cout << "case else " << endl;
+			else{
 				p->next = q->next;
 				if (q->next == NULL)
 					last = p;
 				delete q;
 				count--;
-
-			}*/
-
-
-
-
-
-
-
-
-		//}
-
+			}
+		}
 }
+
 template <class T>
 T OrderedLinkedList<T>::back(){
 	assert(last != NULL);
