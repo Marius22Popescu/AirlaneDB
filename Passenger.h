@@ -30,7 +30,7 @@ public:
 	virtual ~Passanger();
 	bool operator== (Passanger & other);
 	bool operator!= (Passanger & other);
-	bool Passanger::operator< (Passanger & other);
+	bool operator< (Passanger & other);
 	friend ostream& operator<< (ostream & os, Passanger & other);
 };
 
