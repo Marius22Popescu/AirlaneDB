@@ -20,7 +20,7 @@ struct node1{
 template <class T>
 class OrderedLinkedList :public LinkedList<T>{
 protected:
-	node1<T> *head, *last;
+	node1<T> *head, *last, *p, *q;
 	int count;
 public:
 	OrderedLinkedList();
@@ -47,6 +47,8 @@ template <class T>
 OrderedLinkedList<T>::OrderedLinkedList(){
 	head = NULL;
 	last = NULL;
+	p = NULL;
+	q = NULL;
 	count = 0;
 	
 }
@@ -81,13 +83,17 @@ void OrderedLinkedList<T>::insert_first(T& item){
 //insert a new item at the end of the list
 template <class T>
 void OrderedLinkedList<T>::insert_last(T& item){
+	p = NULL;
+	q = head;
 	node1<T>* current = new node1<T>;
 	current->data = item;
-	current->next = NULL;
+	while (q->data < item){
+		p = q;
+		q = q->next;
+	}
 	if (head != NULL){
-		last->next = current;
-		last = current;
-
+	p->next = current;
+	current->next = q;
 	}
 	else{
 		head = last = current;

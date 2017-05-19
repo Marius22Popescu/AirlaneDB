@@ -30,7 +30,7 @@ public:
 	virtual ~Passanger();
 	bool operator== (Passanger & other);
 	bool operator!= (Passanger & other);
-	
+	bool Passanger::operator< (Passanger & other);
 	friend ostream& operator<< (ostream & os, Passanger & other);
 };
 
@@ -102,9 +102,15 @@ bool Passanger::operator!= (Passanger & other)
 	return false;
 }
 
-
 ostream& operator<<(ostream & os, Passanger & other){
 		os << " " << other.getFirstName() << " " << other.getLastName() << " [" << other.getAddress() << "] [" << other.getPhone() << "]\n";
 	
 	return os;
+}
+
+bool Passanger::operator< (Passanger & other)
+{
+	if (getLastName() < other.getLastName())
+		return true;
+	return false;
 }
