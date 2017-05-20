@@ -39,7 +39,7 @@ int _tmain(int argc, _TCHAR* argv[])
 		p.setLastName(lastName);
 		p.setAddress(address);
 		p.setPhone(phone);
-		mylist.insert_last(p);
+		mylist.insert(p);
 		}
 		else if (menuSelection == 'L' || menuSelection == 'l')
 		{

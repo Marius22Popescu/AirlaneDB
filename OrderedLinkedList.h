@@ -26,8 +26,8 @@ public:
 	OrderedLinkedList();
 	bool is_empty();
 	int length();
-	void insert_first(T&);            //overide
-	void insert_last(T&);             //overide
+//	void insert_first(T&);            //overide
+	void insert(T&);             //overide
 	template <class U>
 	friend ostream& operator<< (ostream& os, OrderedLinkedList<U>& list);
 	T search(T&);                     //overide
@@ -63,7 +63,7 @@ template <class T>
 int OrderedLinkedList<T>::length(){
 	return count;
 }
-
+/**
 //insert a new element to the front
 template <class T>
 void OrderedLinkedList<T>::insert_first(T& item){
@@ -79,24 +79,37 @@ void OrderedLinkedList<T>::insert_first(T& item){
 	}
 	count++;
 }
+***/
 
 //insert a new item at the end of the list
 template <class T>
-void OrderedLinkedList<T>::insert_last(T& item){
-	p = NULL;
-	q = head;
+void OrderedLinkedList<T>::insert(T& item){
 	node1<T>* current = new node1<T>;
 	current->data = item;
-	while (q->data < item){
-		p = q;
-		q = q->next;
+	current->next = NULL;
+	if (head == NULL)
+	{
+		head = last = current;
 	}
-	if (head != NULL){
-	p->next = current;
-	current->next = q;
+	else if (item < head->data)
+	{
+		current->next = head;
+		head = current;
+	}
+	else if (last->data < item)
+	{
+		last->next = current;
+		last = current;
 	}
 	else{
-		head = last = current;
+		p = NULL;
+		q = head;
+		while (q->data < item){
+			p = q;
+			q = q->next;
+		}
+		p->next = current;
+		current->next = q;
 	}
 	count++;
 }
