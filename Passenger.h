@@ -110,7 +110,7 @@ ostream& operator<<(ostream & os, Passanger & other){
 
 bool Passanger::operator< (Passanger & other)
 {
-	if (getLastName() < other.getLastName())
+	if (getLastName() <= other.getLastName())
 		return true;
 	return false;
 }

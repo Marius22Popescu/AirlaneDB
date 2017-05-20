@@ -26,12 +26,11 @@ public:
 	OrderedLinkedList();
 	bool is_empty();
 	int length();
-//	void insert_first(T&);            //overide
-	void insert(T&);             //overide
+	void insert(T&);             
 	template <class U>
 	friend ostream& operator<< (ostream& os, OrderedLinkedList<U>& list);
-	T search(T&);                     //overide
-	void delete_node(T&);             //overide
+	T search(T&);                     
+	void delete_node(T&);             
 
 	T back();
 	T front();
@@ -63,25 +62,8 @@ template <class T>
 int OrderedLinkedList<T>::length(){
 	return count;
 }
-/**
-//insert a new element to the front
-template <class T>
-void OrderedLinkedList<T>::insert_first(T& item){
-	node1<T>* current = new node1<T>;
-	current->data = item;
-	current->next = NULL;
-	if (head != NULL){
-		current->next = head;
-		head = current;
-	}
-	else{
-		head = last = current;
-	}
-	count++;
-}
-***/
 
-//insert a new item at the end of the list
+//insert a new item in the list
 template <class T>
 void OrderedLinkedList<T>::insert(T& item){
 	node1<T>* current = new node1<T>;
