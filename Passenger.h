@@ -1,3 +1,4 @@
+//Declaring variable
 #pragma once
 #include "stdafx.h"
 #include <string>
@@ -5,7 +6,7 @@
 #include <fstream>
 using namespace std;
 
-
+//Passanger Class Prototype
 class Passanger
 {
 private:

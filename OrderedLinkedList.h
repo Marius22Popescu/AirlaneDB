@@ -95,7 +95,7 @@ void OrderedLinkedList<T>::insert(T& item){
 	}
 	count++;
 }
-
+//operator overloading <<
 template <class T>
 ostream& operator<< (ostream& os, OrderedLinkedList<T>& list){
 	node1<T>* temp = list.head;
@@ -105,17 +105,16 @@ ostream& operator<< (ostream& os, OrderedLinkedList<T>& list){
 	}
 	return os;
 }
-
+// search function
 template <class T>
 T OrderedLinkedList<T>::search(T& item){
-	node1<T>* temp = head;
-	while (head != NULL && temp->data != item){   
-		temp = temp->next;
-	}
-
-	return temp->data;
+		node1<T>* temp = head;
+		while (head != NULL && temp->data != item){
+			temp = temp->next;
+		}
+		return temp->data;
 }
-
+//delete function
 template <class T>
 void OrderedLinkedList<T>::delete_node(T& item){
 	node1<T> *p, *q;

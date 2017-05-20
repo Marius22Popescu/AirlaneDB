@@ -1,6 +1,13 @@
 // arlineDB.cpp : Defines the entry point for the console application.
-//
+//Marius Popescu
+//CS300
+//Assignment 2
+//05/2017
 
+//This is a data base for airline company that has 4 flight each day. For each flight it is possible to keep a list of passengers 
+//this database keeps thepassangers sorted by their last names in ascending order
+
+//Include directive:
 #include "stdafx.h"
 #include "LinkedList.h"
 #include "OrderedLinkedList.h"
@@ -41,6 +48,7 @@ int _tmain(int argc, _TCHAR* argv[])
 			cout << "Enter phone: \n";
 			cin >> phone;
 
+			//instantiate passanger p and insert the data
 		Passanger p;
 		p.setFirstName(firstName);
 		p.setLastName(lastName);
@@ -73,11 +81,9 @@ int _tmain(int argc, _TCHAR* argv[])
 				cout << mylist400 << endl;
 			else
 				cout << "WRONG FLIGHT NUMBER PLEASE TRY AGAIN!!!\n";
-
-
-			
 		}
-		// Prompt user for name to search 
+
+		// Prompt user for name to search and do the search 
 		if (menuSelection == 'S' || menuSelection == 's')
 		{ 
 			cout << "Enter the last name: ";
@@ -87,9 +93,24 @@ int _tmain(int argc, _TCHAR* argv[])
 			Passanger temp;                
 			temp.setFirstName(firstName);
 			temp.setLastName(lastName);
-			temp = mylist100.search(temp);
-			cout << temp << endl;
-
+			cout << "Enter the flight number:";  // here is a problem, if I search in a wrong list the program, the program will crash because
+			cin >> flight;                       // because the search function needs to return a object not 0
+			if (flight == 100){
+				temp = mylist100.search(temp);
+				cout << temp << endl;
+			}
+			else if (flight == 200){
+				temp = mylist200.search(temp);
+				cout << temp << endl;
+			}
+			else if (flight == 300){
+				temp = mylist300.search(temp);
+				cout << temp << endl;
+			}
+			else if (flight == 400){
+				temp = mylist400.search(temp);
+				cout << temp << endl;
+			}
 		}
 		// Prompt user for name to delete 
 		if (menuSelection == 'D' || menuSelection == 'd')
@@ -127,6 +148,7 @@ int _tmain(int argc, _TCHAR* argv[])
 			
 		}
 	} while (menuSelection != 'Q' && menuSelection != 'q');
+
 	//destroing the list 
 	mylist100.destroy_list();
 	mylist200.destroy_list();
@@ -137,3 +159,4 @@ int _tmain(int argc, _TCHAR* argv[])
 	return 0;
 }
 
+/*******************************************************END OF PROGRAM***************************************************************/
