@@ -1,4 +1,4 @@
-// arlineDB.cpp : Defines the entry point for the console application.
+//arlineDB.cpp : Defines the entry point for the console application.
 //Marius Popescu
 //CS300
 //Assignment 2
@@ -17,15 +17,13 @@
 using namespace std;
 
 
-int _tmain(int argc, _TCHAR* argv[])
+int main()
 {
-	//template <class T>
 	OrderedLinkedList<Passanger> mylist100;
 	OrderedLinkedList<Passanger> mylist200;
 	OrderedLinkedList<Passanger> mylist300;
 	OrderedLinkedList<Passanger> mylist400;
-
-	int flight;
+	string flight;
 	char menuSelection;
 	string lastName, firstName, address, phone;
 	// Ask the user which action want to do and perform the task
@@ -33,20 +31,21 @@ int _tmain(int argc, _TCHAR* argv[])
 		cout << "(A)dd | (S)earch | (D)elete | (L)ist | (Q)uit: ";
 		cin >> menuSelection;
 
-		// Prompt user for new name and phone number to add to database
+		// Prompt user for name, phone number and addres to add to database
 		if (menuSelection == 'A' || menuSelection == 'a')
 		{
 			cout << "Enter the flight number: \n";
 			cin >> flight;
 			cout << "Enter first name: \n";
-			cin >> firstName;
+			cin.ignore();
+			getline(cin, firstName);
 			cout << "Enter last name: \n";
 			cin >> lastName;
 			cout << "Enter address: \n";
 			cin.ignore();
 			getline(cin, address);
 			cout << "Enter phone: \n";
-			cin >> phone;
+			getline(cin, phone);
 
 			//instantiate passanger p and insert the data
 		Passanger p;
@@ -55,29 +54,31 @@ int _tmain(int argc, _TCHAR* argv[])
 		p.setAddress(address);
 		p.setPhone(phone);
 
-		if (flight == 100)
+			//input the object in the right linked list 
+		if (flight == "100")
 			mylist100.insert(p);
-		else if (flight == 200)
+		else if (flight == "200")
 			mylist200.insert(p);
-		else if (flight == 300)
+		else if (flight == "300")
 			mylist300.insert(p);
-		else if (flight == 400)
+		else if (flight == "400")
 			mylist400.insert(p);
 		else
 			cout << "WRONG FLIGHT NUMBER PLEASE ADD AGAIN!!!\n";
 
 		}
+			//user option to list all pasangers from one flight
 		else if (menuSelection == 'L' || menuSelection == 'l')
 		{
 			cout << "Enter the flight number:\n";
 			cin >> flight;
-			if (flight == 100)
+			if (flight == "100")
 				cout << mylist100 << endl;
-			else if (flight == 200)
+			else if (flight == "200")
 				cout << mylist200 << endl;
-			else if (flight == 300)
+			else if (flight == "300")
 				cout << mylist300 << endl;
-			else if (flight == 400)
+			else if (flight == "400")
 				cout << mylist400 << endl;
 			else
 				cout << "WRONG FLIGHT NUMBER PLEASE TRY AGAIN!!!\n";
@@ -90,27 +91,40 @@ int _tmain(int argc, _TCHAR* argv[])
 			cin >> lastName;
 			cout << "Enter the first name: ";
 			cin >> firstName;
-			Passanger temp;                
+			Passanger temp;             //create a temporar pasanger to pass it like parameter for search function
+			Passanger *result;			//create a temporar pasanger to return the inhormation  for search function
 			temp.setFirstName(firstName);
 			temp.setLastName(lastName);
-			cout << "Enter the flight number:";  // here is a problem, if I search in a wrong list the program, the program will crash because
-			cin >> flight;                       // because the search function needs to return a object not 0
-			if (flight == 100){
-				temp = mylist100.search(temp);
-				cout << temp << endl;
-			}
-			else if (flight == 200){
-				temp = mylist200.search(temp);
-				cout << temp << endl;
-			}
-			else if (flight == 300){
-				temp = mylist300.search(temp);
-				cout << temp << endl;
-			}
-			else if (flight == 400){
-				temp = mylist400.search(temp);
-				cout << temp << endl;
-			}
+			
+				result = mylist100.search(temp);
+				if (result != NULL){
+					cout << "Flight Number: 100\n";
+					cout << *result << endl;
+				}
+				else{
+					result = mylist200.search(temp);
+					if (result != NULL){
+						cout << "Flight Number: 200\n";
+						cout << *result << endl;
+					}
+					else{
+						result = mylist300.search(temp);
+						if (result != NULL){
+							cout << "Flight Number: 300\n";
+							cout << *result << endl;
+						}
+						else{
+							result = mylist400.search(temp);
+							if (result != NULL){
+								cout << "Flight Number: 400\n";
+								cout << *result << endl;
+							}
+							else
+								cout << "not found" << endl;
+						}
+					}
+				}
+
 		}
 		// Prompt user for name to delete 
 		if (menuSelection == 'D' || menuSelection == 'd')
@@ -125,19 +139,19 @@ int _tmain(int argc, _TCHAR* argv[])
 			temp1.setFirstName(firstName);
 			temp1.setLastName(lastName);
 
-			if (flight == 100){
+			if (flight == "100"){
 				mylist100.delete_node(temp1);
 				cout << "The passenger was deleted!\n";
 			}
-			else if (flight == 200){
+			else if (flight == "200"){
 				mylist200.delete_node(temp1);
 				cout << "The passenger was deleted!\n";
 			}
-			else if (flight == 300){
+			else if (flight == "300"){
 				mylist300.delete_node(temp1);
 				cout << "The passenger was deleted!\n";
 			}
-			else if (flight == 400){
+			else if (flight == "400"){
 				mylist400.delete_node(temp1);
 				cout << "The passenger was deleted!\n";
 			}
@@ -155,8 +169,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	mylist300.destroy_list();
 	mylist400.destroy_list();
 
-	system("pause");
 	return 0;
 }
 
-/*******************************************************END OF PROGRAM***************************************************************/
+/*******************************************************END OF PROGRAM*************************************************************/

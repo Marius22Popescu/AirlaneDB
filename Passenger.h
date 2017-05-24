@@ -35,13 +35,14 @@ public:
 	friend ostream& operator<< (ostream & os, Passanger & other);
 };
 
-
+//initializing the object: Passanger
 Passanger::Passanger()
 {
 	FirstName = " ";
 	LastName = " ";
 	Address = " ";
 	Phone = " ";
+	
 }
 
 Passanger::~Passanger()
@@ -49,6 +50,7 @@ Passanger::~Passanger()
 
 }
 
+//getters and setters
 void Passanger::setFirstName(string n)
 {
 	FirstName = n;
@@ -89,6 +91,7 @@ string Passanger::getPhone()
 	return Phone;
 }
 
+// Overloding the "==" operator
 bool Passanger::operator== (Passanger & other)
 {
 	if (getFirstName() == other.getFirstName() && getLastName() == other.getLastName())
@@ -96,6 +99,7 @@ bool Passanger::operator== (Passanger & other)
 	return false;
 }
 
+// Overloding the " != " operator
 bool Passanger::operator!= (Passanger & other)
 {
 	if (getFirstName() != other.getFirstName() && getLastName() != other.getLastName())
@@ -103,12 +107,14 @@ bool Passanger::operator!= (Passanger & other)
 	return false;
 }
 
+// Overloding the "<<" operator
 ostream& operator<<(ostream & os, Passanger & other){
 		os << " " << other.getFirstName() << " " << other.getLastName() << " [" << other.getAddress() << "] [" << other.getPhone() << "]\n";
 	
 	return os;
 }
 
+//Overloading the "<" operator
 bool Passanger::operator< (Passanger & other)
 {
 	if (getLastName() <= other.getLastName())

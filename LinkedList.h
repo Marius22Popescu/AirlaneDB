@@ -2,12 +2,11 @@
 #define LINKEDLIST_H_
 #include <iostream>
 #include <fstream>
-#include "Passenger.h"
 using namespace std;
 
 template <class T>
 struct node{
-	Passanger data;
+	T data;
 	node* next;
 };
 
@@ -58,7 +57,7 @@ int LinkedList<T>::length(){
 	return count;
 }
 
-//insert a new lelement to the front
+//insert a new element to the front
 template <class T>
 void LinkedList<T>::insert_first(T& item){
 	node<T>* current = new node<T>;

@@ -29,7 +29,7 @@ public:
 	void insert(T&);             
 	template <class U>
 	friend ostream& operator<< (ostream& os, OrderedLinkedList<U>& list);
-	T search(T&);                     
+	T* search(T&);                     
 	void delete_node(T&);             
 
 	T back();
@@ -107,13 +107,16 @@ ostream& operator<< (ostream& os, OrderedLinkedList<T>& list){
 }
 // search function
 template <class T>
-T OrderedLinkedList<T>::search(T& item){
+T* OrderedLinkedList<T>::search(T& item){
 		node1<T>* temp = head;
-		while (head != NULL && temp->data != item){
+		while (temp != NULL && temp->data != item){
 			temp = temp->next;
 		}
-		return temp->data;
+		if (temp != NULL)
+			return &temp->data;
+	    return NULL;
 }
+
 //delete function
 template <class T>
 void OrderedLinkedList<T>::delete_node(T& item){
